@@ -45,7 +45,7 @@ cy.task('emailMark').then((after) => {          // before the action that sends 
 
 Why tasks and not `cy.request`: the tasks run in Node, so the secret never reaches the browser and the helper package does the long-polling. A plain `cy.request` version is in the [Cypress guide](https://emailblackhole.io/docs/cypress).
 
-**Local versus CI:** a free session is for your machine. CI cannot create a session (it needs a browser), so `.github/workflows/e2e.yml` needs a **permanent inbox** (paid plan) whose values you store as repository secrets. Without those secrets the CI run fails; that is expected on a fresh fork. More: [password-reset testing](https://emailblackhole.io/docs/test-password-reset), [guide for AI coding agents](https://emailblackhole.io/docs/ai-agents), and the [Playwright starter](https://github.com/nbs-applications/emailblackhole-playwright-starter).
+**Local versus CI:** a free session is for your machine. CI cannot create a session (it needs a browser), so `.github/workflows/e2e.yml` needs a **permanent inbox** (paid plan) whose values you store as repository secrets. Without those secrets the CI job skips the e-mail test and passes with a notice. More: [password-reset testing](https://emailblackhole.io/docs/test-password-reset), [guide for AI coding agents](https://emailblackhole.io/docs/ai-agents), and the [Playwright starter](https://github.com/nbs-applications/emailblackhole-playwright-starter).
 
 ## Notes
 
