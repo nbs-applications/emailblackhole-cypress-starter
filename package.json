@@ -1,0 +1,27 @@
+{
+  "name": "emailblackhole-cypress-starter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cypress starter: test the email your app sends (password reset, sign-up confirmation, magic link) with Email Blackhole. No signup, no API key.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.6"
+  },
+  "scripts": {
+    "start": "node --env-file=.env app/server.mjs",
+    "cypress:run": "cypress run",
+    "test": "concurrently --kill-others --success first --names app,cypress \"npm start\" \"wait-on -t 30000 http-get://localhost:3000/forgot-password && cypress run\"",
+    "demo": "concurrently --kill-others --names app,cypress \"npm start\" \"wait-on -t 30000 http-get://localhost:3000/forgot-password && cypress open\""
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "cypress": "^13.17.0",
+    "dotenv": "^16.4.5",
+    "emailblackhole": "^0.1.0",
+    "wait-on": "^8.0.1"
+  }
+}
